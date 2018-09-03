@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 14,
+  "data": [
+    {
+      "id":1,
+      "class_name": "202",
+      "grade": "07级",
+      "school_name":"印江职业中专",
+      "stu_num":"54",
+      "first_responsible_person":"彭修",
+      "second_responsible_person": "阳涛",
+      "status": "1"
+    },
+    {
+      "id":2,
+      "class_name": "203",
+      "grade": "07级",
+      "school_name":"江口职业中专",
+      "stu_num":"24",
+      "first_responsible_person":"黄红",
+      "second_responsible_person": "阳涛",
+      "status": "2"
+    }
+  ]
+}

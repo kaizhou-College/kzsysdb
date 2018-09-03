@@ -1,0 +1,56 @@
+[
+  {
+    "title": "班级管理",
+    "icon": "iconfont icon-caidan",
+    "href": "/admin/article.html",
+    "spread": false,
+    "children":[
+
+      {
+        "title": "班级信息",
+        "icon": "iconfont icon-clock_fill",
+        "href": "/class/index",
+        "spread": false
+      },
+      {
+        "title": "学生信息",
+        "icon": "iconfont icon-clock_fill",
+        "href": "/front/list_student.html",
+        "spread": false
+      },
+      {
+        "title": "成绩管理",
+        "icon": "layui-icon layui-icon-tabs",
+        "href": "/front/list_student_score.html",
+        "spread": false
+
+      }
+    ]
+  },
+  {
+    "title": "教学管理",
+    "icon": "iconfont icon-menu1",
+    "href": "/admin/userAdmin.html",
+    "spread": false,
+    "children":[
+      {
+        "title": "每日总结",
+        "icon": "iconfont icon-clock_fill",
+        "href": "/teacherAdministration/front/daily_summary.html",
+        "spread": false
+      },
+      {
+        "title": "周总结",
+        "icon": "layui-icon layui-icon-tabs",
+        "href": "/teacherAdministration/front/weekly_summary.html",
+        "spread": false
+      },
+      {
+        "title": "学期总结",
+        "icon": "iconfont icon-guanli",
+        "href": "/teacherAdministration/front/term_summary.html",
+        "spread": false
+      }
+    ]
+  }
+]

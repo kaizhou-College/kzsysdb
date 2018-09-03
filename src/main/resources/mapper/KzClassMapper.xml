@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kz.kzsys.mapper.KzClassMapper">
+
+    <sql id="Base_Column_List">
+      ID,CLASS_NAME,GRADE,SCHOOL_NAME,STU_NUM,FIRST_RESPONSIBLE_PERSON,
+      SECOND_RESPONSIBLE_PERSON,STATUS,CREATE_TIME
+    </sql>
+    
+    <insert id="insert" parameterType="kzClass" >
+      INSERT INTO KZ_CLASS (ID,CLASS_NAME,GRADE,SCHOOL_NAME,STU_NUM,FIRST_RESPONSIBLE_PERSON,
+      SECOND_RESPONSIBLE_PERSON,STATUS,CREATE_TIME)
+      VALUES(#{id},#{className},#{grade},#{schoolName},#{stuNum},#{firstResponsiblePerson}
+      ,#{secondResponsiblePerson},#{status},now())
+    </insert>
+
+    <select id="getByConditionPage" parameterType="kzClassQuery" resultType="KzClass">
+        SELECT
+          <include refid="Base_Column_List"/>
+        FROM kz_class
+    </select>
+
+</mapper>

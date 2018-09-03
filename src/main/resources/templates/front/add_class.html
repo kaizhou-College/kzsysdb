@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加班级</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../Public/static/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../Public/static/css/public.css" media="all"/>
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" style="width:90%;padding-left: 5%;">
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="className"><b style="color: red">* </b>班级名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="className" id="className" placeholder="班级名称" lay-verify="required"
+                   lay-verType="tips" autocomplete="off" maxlength="255" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="grade"><b style="color: red">* </b>年级</label>
+        <div class="layui-input-block">
+            <input type="text" name="grade" id="grade" placeholder="年级，如：07级" lay-verify="required" lay-verType="tips"
+                   autocomplete="off" maxlength="32" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="grade"><b style="color: red">* </b>所属学校</label>
+        <div class="layui-input-block">
+            <input type="text" name="schoolName" id="schoolName" placeholder="学校名称" lay-verify="required"
+                   lay-verType="tips" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="stuNum"><b style="color: red">* </b>人数</label>
+        <div class="layui-input-block">
+            <input type="text" name="stuNum" id="stuNum" placeholder="班级人数" lay-verify="required" lay-verType="tips"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="firstResponsiblePerson"><b style="color: red">* </b>第1负责人</label>
+        <div class="layui-input-block">
+            <input type="text" name="firstResponsiblePerson" id="firstResponsiblePerson" placeholder="第1负责老师姓名"
+                   lay-verify="required" lay-verType="tips" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="secondResponsiblePerson"><b style="color: red">* </b>第2负责人</label>
+        <div class="layui-input-block">
+            <input type="text" name="secondResponsiblePerson" id="secondResponsiblePerson" placeholder="第2负责老师姓名"
+                   lay-verify="required" lay-verType="tips" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级状态</label>
+            <div class="layui-input-inline">
+                <select name="status">
+                    <option value="1">在读</option>
+                    <option value="2">已毕业</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+</form>
+<script type="text/javascript" src="../Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../Public/static/layui/layui.js"></script>
+<script type="text/javascript" src="/Public/static/js/jquery.toast.min.js"></script>
+<script type="text/javascript" src="/Public/static/js/alert.js"></script>
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'laydate', 'upload', 'layedit'], function () {
+        let form = layui.form,
+                laydate = layui.laydate,
+                upload = layui.upload,
+                layedit = layui.layedit,
+                layer = parent.layer === undefined ? layui.layer : top.layer;
+
+        form.on("submit(addData)", function () {
+            let index = layer.msg('数据提交中，请稍候', {icon: 16, time: false});
+            console.log($('form').serialize());
+            $.ajax({
+                url: "/class/addSubmit",
+                type: "POST",
+                //contentType:"application/json;charset=UTF-8",
+                data: $('form').serialize(),
+                success: function (res) {
+                    window.parent.window.parent.toast(res.info, res.code);
+                    layer.close(index);
+                    if (0 === res.code) {
+                        parent.layer.closeAll();
+                        window.parent.tablist.reload();
+                    } else {
+                        toast('添加失败', "error", 500);
+                        parent.layer.closeAll();
+                        window.parent.tablist.reload();
+                    }
+                },
+                error: function (res) {
+                    layer.close(index);
+                    toast('请求失败', "error", 400);
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+
+            });
+
+            /* $.post("/class/addSubmit",{para:$('form').serialize()},function(res){
+             //console.log();
+             window.parent.window.parent.toast(res.info,res.code);
+             layer.close(index);
+             if(0 === res.code){
+             parent.layer.closeAll();
+             window.parent.tablist.reload();
+             }
+             },"application/json");*/
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

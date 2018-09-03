@@ -1,0 +1,39 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 3,
+  "data": [
+    {
+      "id":1,
+      "admin_user_id":1,
+      "ip":"http://127.0.0.24/admin/Systemoperationlog/delete",
+      "os":"Windows NT 10.0",
+      "browser":"Chrome/67.0.3396.99",
+      "logtime":"2018-07-22 19:37:34"
+    },
+    {
+      "id":2,
+      "admin_user_id":2,
+      "ip":"http://127.0.0.24/admin/Systemoperationlog/delete",
+      "os":"Windows NT 10.0",
+      "browser":"Chrome/67.0.3396.99",
+      "logtime":"2018-07-22 19:37:34"
+    },
+    {
+      "id":3,
+      "admin_user_id":2,
+      "ip":"http://127.0.0.24/admin/Systemoperationlog/delete",
+      "os":"Windows NT 10.0",
+      "browser":"Chrome/67.0.3396.99",
+      "logtime":"2018-07-22 19:37:34"
+    },
+    {
+      "id":4,
+      "admin_user_id":3,
+      "ip":"http://127.0.0.24/admin/Systemoperationlog/delete",
+      "os":"Windows NT 10.0",
+      "browser":"Chrome/67.0.3396.99",
+      "logtime":"2018-07-22 19:37:34"
+    }
+  ]
+}

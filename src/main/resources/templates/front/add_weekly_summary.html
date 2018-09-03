@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加周总结</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../Public/static/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="../Public/static/css/public.css" media="all"/>
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" style="width:90%;padding-left: 5%;">
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="title"><b style="color: red">* </b>标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="title" placeholder="每日总结的标题" lay-verify="required" lay-verType="tips"
+                   autocomplete="off" maxlength="255" value="" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" for="summary_content"><b style="color: red">* </b>总结内容</label>
+        <div class="layui-input-block">
+        <textarea  class="layui-textarea" id="summary_content" name="summary_content" style="display: none">
+            每日总结的详细内容，格式如下：（仅供参考，作为评优的参考）<br/>
+            1、今天上午2节专业课讲html第1章的titlt meta等标签、下午一节专业课上级练习、晚上一个自习辅导。<br/>
+            2、作业完成情况有3为同学作业未按时给我检查，已经找谈话、1个态度很好、两外两个态度很差。<br/>
+            3、今日出勤情况，张三迟到。李四旷课。<br/>
+            4、上课总结：感觉今天的课程讲解在meta标签这里讲解的不是很流畅、学生普遍相关作业做不出。可能在备课时感觉这个地方
+            不重要、没有认真的备好。然后就是在讲编码的时候，出现了没有预料到的错误，下次备课应更仔细。<br/>
+        </textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="../Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'laydate', 'upload', 'layedit'], function () {
+        let form = layui.form,
+            laydate = layui.laydate,
+            upload = layui.upload,
+            layedit = layui.layedit,
+            layer = parent.layer === undefined ? layui.layer : top.layer;
+             //构建富文本编辑器
+            $ = layui.jquery;
+
+        //构建一个默认的编辑器
+        var index = layedit.build('summary_content');
+
+        form.on("submit(addData)", function () {
+            let index = layer.msg('数据提交中，请稍候', {icon: 16, time: false});
+            $.post("/daily_summary/add", {para: $('form').serialize()}, function (res) {
+                window.parent.window.parent.toast(res.info, res.code);
+                layer.close(index);
+                if (0 === res.code) {
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

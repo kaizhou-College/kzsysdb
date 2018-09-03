@@ -1,0 +1,17 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 2,
+  "data": [
+    {"id":1,
+      "title":"超级管理员",
+      "description":"拥有所有权限",
+      "status":true},
+    {"id":2,
+      "title":"管理员",
+      "description":"展示所有角色组",
+      "status":true}
+  ]
+
+
+}

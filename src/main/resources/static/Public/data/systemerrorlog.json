@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 2,
+  "data": [
+    { "id":1,
+      "file":"asdphp",
+      "line":"2",
+      "code":0,
+      "message":"1062:Duplicate)",
+      "trace":"圣诞树看玛丽莲梦露",
+      "createtime":"2018-07-22 01:10:13",
+      "admin_user_id":2
+    },
+    { "id":2,
+      "file":"sdsad.php",
+      "line":"2",
+      "code":0,
+      "message":"1062:Duplicate)",
+      "trace":"qrqwe看玛丽莲梦露",
+      "createtime":"2018-07-22 01:10:13",
+      "admin_user_id":2
+    },
+    { "id":3,
+      "file":"asdhp",
+      "line":"2",
+      "code":0,
+      "message":"1062:Duplicate)",
+      "trace":"圣sda看玛丽莲梦露",
+      "createtime":"2018-07-22 01:10:13",
+      "admin_user_id":1
+    }
+  ]
+
+
+}
