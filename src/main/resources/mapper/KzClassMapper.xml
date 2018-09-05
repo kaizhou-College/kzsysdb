@@ -19,5 +19,39 @@
           <include refid="Base_Column_List"/>
         FROM kz_class
     </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="KzClass">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM kz_class
+        WHERE id=#{id}
+    </select>
+    <update id="updateByPrimaryKey" parameterType="kzClass">
+        update kz_class
+        <set>
+        <if test="className != null" >
+            class_name = #{className,jdbcType=VARCHAR},
+        </if>
+        <if test="grade != null" >
+            grade = #{grade,jdbcType=VARCHAR},
+        </if>
+        <if test="schoolName != null" >
+            SCHOOL_NAME = #{schoolName,jdbcType=VARCHAR},
+        </if>
+        <if test="stuNum != null" >
+            STU_NUM = #{stuNum,jdbcType=INTEGER},
+        </if>
+        <if test="firstResponsiblePerson != null" >
+        FIRST_RESPONSIBLE_PERSON = #{firstResponsiblePerson,jdbcType=VARCHAR},
+       </if>
+        <if test="secondResponsiblePerson != null" >
+            SECOND_RESPONSIBLE_PERSON = #{secondResponsiblePerson,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null" >
+            STATUS = #{status,jdbcType=INTEGER},
+        </if>
+        </set>
+        where
+          id= #{id}
+    </update>
 
 </mapper>

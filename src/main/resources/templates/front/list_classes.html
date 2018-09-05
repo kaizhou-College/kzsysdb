@@ -47,9 +47,9 @@
 <!--使用状态-->
 <script type="text/html" id="status">
     {{# if(d.status == 1){ }}
-    <span class="layui-blue">毕业</span>
+    <span class="layui-blue">在读</span>
     {{# }else{ }}
-    <span class="layui-red">在读</span>
+    <span class="layui-red">毕业</span>
     {{# } }}
 </script>
 <!--操作-->
@@ -169,7 +169,7 @@
                 /*for(var i in data){
                     alert(i+"=="+data[i]);
                 }*/
-                addoredit("/class/add","编辑班级");
+                addoredit("/class/edit?id="+data.id,"编辑班级");
             } else if (layEvent === 'del') { //删除
                 layer.confirm('确定删除此数据？', {icon: 3, title: '提示'}, function (index) {
                     layer.close(index);

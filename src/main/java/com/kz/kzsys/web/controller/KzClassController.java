@@ -10,7 +10,9 @@ import javafx.print.PageOrientation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -47,7 +49,26 @@ public class KzClassController {
     @ResponseBody
     public ServerResponse<List> list(KzClassQuery kcQ){
         PageInfo<KzClass> pageInfo = kzClassService.getByConditionPage(kcQ);
-        return  ServerResponse.createBySuccess("查询成功！！",pageInfo.getList(),pageInfo.getPageNum(),pageInfo.getPageSize(),pageInfo.getSize());
+        return  ServerResponse.createBySuccess("查询成功！！",pageInfo.getList(),pageInfo.getPageNum(),pageInfo.getPageSize(),(int)pageInfo.getTotal());
     }
+    @RequestMapping("/edit")
+    public ModelAndView edit(Long id,HttpServletRequest request){
+        KzClass kzClass =kzClassService.selectByPrimaryKey(id);
+
+        ModelAndView view = new ModelAndView();
+        // 设置跳转的视图 默认映射到 src/main/resources/templates/{viewName}.html
+        view.setViewName("/front/edit_class");
+        view.addObject("kzClass", kzClass);
+        return view;
+    }
+    @PostMapping("/editSubmit")
+    @ResponseBody
+    public ServerResponse<String> editSubmit(KzClass kzClass){
+        Long result = kzClassService.updateByPrimaryKeySelective(kzClass);
+
+        return ServerResponse.createBySuccess("更新成功");
+    }
+
+
 
 }

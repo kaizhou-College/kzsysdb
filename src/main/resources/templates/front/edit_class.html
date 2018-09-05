@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>修改班级信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../Public/static/css/public.css" media="all" />
+    <link rel="stylesheet" href="../Public/static/js/formSelects-v4.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" lay-filter="form" style="width:90%;padding-left: 5%">
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label">班级名称 <b class="layui-red">*</b></label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" lay-verify="required|className" lay-Vertype="tips"
+                   name="className" placeholder="请输入班级名称"  th:value="${kzClass.className}">
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-xs12 layui-col-md6">
+            <label class="layui-form-label">年级<b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input autocomplete="off" type="text" name="grade" lay-Vertype="tips" class="layui-input" placeholder="年级"th:value="${kzClass.grade}">
+            </div>
+        </div>
+        <div class="magb15 layui-col-xs12 layui-col-md6">
+            <label class="layui-form-label">所属学校<b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input autocomplete="off" type="text" name="schoolName" lay-Vertype="tips" class="layui-input" th:value="${kzClass.schoolName}"
+                       lay-verify="required" placeholder="所属学校">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">人数<b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input title="班级" type="text" placeholder="班级人数"  autocomplete="off" name="stuNum" class="layui-input" th:value="${kzClass.stuNum}">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">第1负责人<b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input title="电话" placeholder="第1负责老师姓名" type="text"  autocomplete="off"
+                       name="firstResponsiblePerson" class="layui-input" th:value="${kzClass.firstResponsiblePerson}">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">第2负责人<b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input title="家长电话" type="text" placeholder="第2负责老师姓名"
+                       id="secondResponsiblePerson" autocomplete="off" name="secondResponsiblePerson" class="layui-input" th:value="${kzClass.secondResponsiblePerson}">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">班级状态</label>
+        <div class="layui-input-inline">
+            <select name="status" th:value="${kzClass.status}" >
+                <option value="">请选择</option>
+                <option value="1" th:selected="${kzClass.status==1}" >在读</option>
+                <option value="2" th:selected="${kzClass.status==2}" >已毕业</option>
+
+            </select>
+        </div>
+    </div>
+    <input type="hidden" name="id" th:value="${kzClass.id}">
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="../Public/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base : "/Public/static/js/"
+    }).extend({
+        'formSelects': 'formSelects-v4'
+    });
+    layui.use(['form','layer','formSelects','laydate'],function(){
+        var form = layui.form,
+            laydate=layui.laydate,
+            formSelects = layui.formSelects,
+            layer = parent.layer === undefined ? layui.layer : top.layer;
+      /*  form.val('form',{
+            'real_name':'{$info.real_name}'
+            ,'sex':'{$info.sex}'
+            ,'phone':'{$info.phone}'
+            ,'address':'{$info.address}'
+            ,'home_phone':'{$info.home_phone}'
+            ,'status':'{$info.status}' === '1' ? 'checked' : ''
+        });*/
+       /* laydate.render({
+            elem: '#birthday' //指定元素
+        });*/
+        form.verify({
+            className: function(value, item){ //value：表单的值、item：表单的DOM对象
+               /* if(/[\u4E00-\u9FA5]/g.test(value)){
+                    return '不可出现汉字';
+                }*/
+                if(value.length < 2 || value.length > 10){
+                    return '长度2-10';
+                }
+            },
+            /*phone:function (value, item) {
+                if(value.length !=11){
+                    return '移动电话长度必须11位';
+                }
+            },
+            home_phone:function (value, item) {
+                if(value.length !=11){
+                    return '移动电话长度必须11位';
+                }
+            },*/
+        });
+        form.on("submit(addData)",function(data){
+            var groups = formSelects.value('select1', 'val');
+           /* var pass = $('input[name=password]');
+            var password = pass.val();
+            if(/[\u4E00-\u9FA5]/g.test(password)){
+                layer.msg('密码不可出现汉字',{icon:2});
+                return false;
+            }
+            if(password.length > 0 && (password.length < 6 || password.length > 15)){
+                layer.msg('密码长度6-15',{icon:2});
+                return false;
+            }*/
+            var index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/class/editSubmit",$('form').serialize(),function(res){
+                layer.close(index);
+                if(0 === res.code){
+                    window.parent.window.parent.toast(res.info,0);
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }else{
+                    window.parent.window.parent.toast(res.info,1);
+                }
+            });
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

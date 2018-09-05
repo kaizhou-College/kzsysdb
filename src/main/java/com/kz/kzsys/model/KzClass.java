@@ -60,6 +60,7 @@ public class KzClass extends BaseModel{
     }
 
     public String getFirstResponsiblePerson() {
+
         return firstResponsiblePerson;
     }
 
@@ -67,11 +68,13 @@ public class KzClass extends BaseModel{
         this.firstResponsiblePerson = firstResponsiblePerson;
     }
 
-    public String getSecondeResponsiblePerson() {
+    public String getSecondResponsiblePerson() {
+        if(secondResponsiblePerson==null)
+            return "无";
         return secondResponsiblePerson;
     }
 
-    public void setSecondeResponsiblePerson(String secondResponsiblePerson) {
+    public void setSecondResponsiblePerson(String secondResponsiblePerson) {
         this.secondResponsiblePerson = secondResponsiblePerson;
     }
 

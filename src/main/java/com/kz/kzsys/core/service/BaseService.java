@@ -15,7 +15,7 @@ public class BaseService<M, QM extends BaseQueryModel> implements IBaseService<M
 		this.mapper = mapper;
 	}
 	public PageInfo<M> getByConditionPage(QM qm) {
-		PageHelper.startPage(qm.getPageNum(),qm.getPageSize());
+		PageHelper.startPage(qm.getPage(),qm.getLimit());
 		List<M> list = mapper.getByConditionPage(qm);
 		for(M m :list){
 			System.out.println(m);

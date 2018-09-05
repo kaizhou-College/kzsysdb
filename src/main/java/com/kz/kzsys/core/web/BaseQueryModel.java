@@ -4,30 +4,34 @@ package com.kz.kzsys.core.web;
 public class BaseQueryModel{
 	
 	private String queryJsonStr = "";
-	private int pageNum = 1;
-	private int pageSize = 2;
+	private int page = 1;
+	private int limit = 2;
 	public String getQueryJsonStr() {
 		return queryJsonStr;
 	}
 	public void setQueryJsonStr(String queryJsonStr) {
 		this.queryJsonStr = queryJsonStr;
 	}
-	
-	public int getPageNum() {
-		return pageNum;
+
+	public int getPage() {
+		return page;
 	}
-	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
+
+	public void setPage(int page) {
+		this.page = page;
 	}
-	public int getPageSize() {
-		return pageSize;
+
+	public int getLimit() {
+		return limit;
 	}
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+
+	public void setLimit(int limit) {
+		this.limit = limit;
 	}
+
 	@Override
 	public String toString() {
-		return "BaseWebModel [queryJsonStr=" + queryJsonStr + ", pageNum=" + pageNum + ", pageSize=" + pageSize + "]";
+		return "BaseWebModel [queryJsonStr=" + queryJsonStr + ", page=" + page + ", limit=" + limit + "]";
 	}
 	
 }

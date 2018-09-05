@@ -2,7 +2,7 @@
 <html class="loginHtml">
 <head>
     <meta charset="utf-8">
-    <title>前台首页-登陆-凯舟科技</title>
+    <title>凯舟科技--专注互联网50年</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -120,7 +120,7 @@
     </div>
     <div class="layui-form-item input-item">
         <label for="userName">用户名</label>
-        <input type="text" placeholder="请输入用户名" autocomplete="off" id="userName" class="layui-input" name="username" lay-verify="required" lay-verType="tips">
+        <input type="text" placeholder="请输入用户名" autocomplete="off" id="userName" class="layui-input" name="userName" lay-verify="required" lay-verType="tips">
     </div>
     <div class="layui-form-item input-item">
         <label for="password">密码</label>
@@ -175,11 +175,40 @@
             _this.text("登录中...").attr("disabled","disabled").addClass("layui-btn-disabled");
 
             //这里暂时没有后台就先让他通过
-            toast('登陆成功','Success',0);
+
+            $.ajax({
+                url:"/user/login",
+                type:'get',
+                dataType:'json'
+                ,data:$("form").serialize()
+                ,success:function(data){
+                    if(0 === data.code){
+                        _this.text("登录").addClass('layui-btn-disabled').prop('disabled',true);
+                        toast('登陆成功','Success',0);
+                        setTimeout(function(){
+                            //window.location.href = "{$Think.get.jumpLink|urldecode}" ? "{$Think.get.jumpLink|urldecode}" : "{$url}";
+                            window.location.href ="/index/admin";
+                        },1000);
+                    }else{
+                        $('input[name=token]').val('');
+                        ob.reset();
+                        _this.text("登录").addClass('layui-btn-disabled').prop('disabled',true);
+                        toast(data.msg,data.code);
+                    }
+                }
+                ,error:function(data){
+                   // _this.text("登录").addClass('layui-btn-disabled').prop('disabled',true);
+                    $('input[name=token]').val('');
+                    toast(data.code,data.msg);
+                }
+            });
+
+
+            /*toast('登陆成功','Success',0);
             setTimeout(function(){
-                /*window.location.href = "{$Think.get.jumpLink|urldecode}" ? "{$Think.get.jumpLink|urldecode}" : "{$url}";*/
+                /!*window.location.href = "{$Think.get.jumpLink|urldecode}" ? "{$Think.get.jumpLink|urldecode}" : "{$url}";*!/
                 window.location.href ="/index/admin"
-                },1000);
+                },1000);*/
 
             /*$.ajax({
                 url:"/admin/login/check",

@@ -3,7 +3,7 @@
 <mapper namespace="com.kz.kzsys.mapper.KzUserMapper">
 
     <sql id="Base_Column_List">
-       UID,USERNAME,PASSWORD,TELEPHONE,SEX
+       UID,USERNAME,PASSWORD,TELEPHONE,SEX,SALT
     </sql>
 
     <select id="findByName" parameterType="java.lang.String" resultType="kzUser">
