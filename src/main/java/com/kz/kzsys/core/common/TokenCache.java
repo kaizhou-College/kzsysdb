@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 /**
- * @Title: TokenCache.java 
- * @Package com.kz.core.common 
- * @Description: TODO(用一句话描述该文件做什么) 
- * @author 凯舟.陈超  
- * @date 2017年12月29日 上午10:46:03 
+ * @Title: TokenCache.java
+ * @Package com.kz.core.common
+ * @Description: TODO(用一句话描述该文件做什么)
+ * @author 凯舟.陈超
+ * @date 2017年12月29日 上午10:46:03
  * @version V1.0
  */
 public class TokenCache {

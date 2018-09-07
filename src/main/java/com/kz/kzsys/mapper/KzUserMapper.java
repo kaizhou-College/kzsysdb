@@ -13,7 +13,7 @@ public interface KzUserMapper {
     * @param username 用户名
     * @return  查询结果
     * @author 凯舟.陈超
-    * @date 2018/8/17 8:52 
+    * @date 2018/8/17 8:52
     */
     //TODO 需要数据库kz_user表上的username字段建立一个唯一索引《完成》
     KzUser findByName(String username);

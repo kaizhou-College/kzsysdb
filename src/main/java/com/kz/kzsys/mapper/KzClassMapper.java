@@ -10,4 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface KzClassMapper extends BaseMapper<KzClass,KzClassQuery>{
+    KzClass selectByPrimaryName(String name);
+
 }

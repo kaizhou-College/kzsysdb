@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kz.kzsys.mapper.KzWeeklySummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.kz.kzsys.model.KzWeeklySummary" >
+    <id column="wsid" property="wsid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kz.kzsys.model.KzWeeklySummary" extends="BaseResultMap" >
+    <result column="tetx" property="tetx" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wsid, title, create_time, update_time, userId
+  </sql>
+  <sql id="Blob_Column_List" >
+    tetx
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from kz_weekly_summary
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kz_weekly_summary
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    insert into kz_weekly_summary (wsid, title, create_time, 
+      update_time, userId, tetx
+      )
+    values (#{wsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER}, #{tetx,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    update kz_weekly_summary
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="tetx != null" >
+        tetx = #{tetx,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    update kz_weekly_summary
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      userId = #{userid,jdbcType=INTEGER},
+      tetx = #{tetx,jdbcType=LONGVARCHAR}
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    update kz_weekly_summary
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      userId = #{userid,jdbcType=INTEGER}
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </update>
+<!--下面是我修改了的方法-->
+
+  <insert id="insertSelective" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    insert into kz_weekly_summary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      wsid,
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="tetx != null" >
+        tetx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      null,
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="tetx != null" >
+        #{tetx,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--下面是我自己写的方法-->
+
+  <select id="getByConditionPage" parameterType="com.kz.kzsys.model.KzWeeklySummaryQuery" resultType="com.kz.kzsys.model.KzWeeklySummary">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM kz_weekly_summary
+    where
+    1=1
+    <!--<if test="sname != null and sname != ''" >
+      and sname like '%${sname}%'
+    </if>
+    <if test="status != null and status !=0 " >
+      and STATUS = #{status,jdbcType=INTEGER}
+    </if>-->
+  </select>
+
+  <update id="myUpdateByPrimaryKeySelective" parameterType="com.kz.kzsys.model.KzWeeklySummary" >
+    update kz_weekly_summary
+    <set >
+      <if test="title != null and title != '' " >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null " >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null  and userid != 0 " >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="tetx != null  and tetx != '' " >
+        tetx = #{tetx,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where wsid = #{wsid,jdbcType=INTEGER}
+  </update>
+</mapper>

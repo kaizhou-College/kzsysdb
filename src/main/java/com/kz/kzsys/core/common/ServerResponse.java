@@ -5,11 +5,11 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import java.io.Serializable;
 
 /**
- * @Title: ServerResponse.java 
- * @Package com.kz.core.common 
- * @Description: TODO(用一句话描述该文件做什么) 
- * @author 凯舟.陈超  
- * @date 2017年12月29日 上午10:45:57 
+ * @Title: ServerResponse.java
+ * @Package com.kz.core.common
+ * @Description: TODO(用一句话描述该文件做什么)
+ * @author 凯舟.陈超
+ * @date 2017年12月29日 上午10:45:57
  * @version V1.0
  */
 @JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)

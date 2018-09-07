@@ -1,12 +1,12 @@
 package com.kz.kzsys.core.common;
 
 /**
- * 
- * @Title: ResponseCode.java 
- * @Package com.kz.core.common 
- * @Description: TODO(用一句话描述该文件做什么) 
- * @author 凯舟.陈超  
- * @date 2017年12月29日 上午10:45:50 
+ *
+ * @Title: ResponseCode.java
+ * @Package com.kz.core.common
+ * @Description: TODO(用一句话描述该文件做什么)
+ * @author 凯舟.陈超
+ * @date 2017年12月29日 上午10:45:50
  * @version V1.0
  */
 public enum ResponseCode {

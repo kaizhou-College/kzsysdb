@@ -2,7 +2,7 @@ package com.kz.kzsys.core.web;
 
 
 public class BaseQueryModel{
-	
+
 	private String queryJsonStr = "";
 	private int page = 1;
 	private int limit = 2;
@@ -33,5 +33,5 @@ public class BaseQueryModel{
 	public String toString() {
 		return "BaseWebModel [queryJsonStr=" + queryJsonStr + ", page=" + page + ", limit=" + limit + "]";
 	}
-	
+
 }

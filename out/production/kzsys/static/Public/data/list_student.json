@@ -1,0 +1,161 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 14,
+  "data": [
+    {
+      "id":1,
+      "username": "二狗子",
+      "sex": "女",
+      "grade":"07级",
+      "classes":"202",
+      "phone":18074540036,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": "1"
+    },
+    {
+      "id":2,
+      "username": "三狗子",
+      "sex": "男",
+      "grade":"07级",
+      "classes":"202",
+      "phone":18074540037,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": "2"
+    },
+    {
+      "id":3,
+      "username": "四狗子",
+      "sex": "女",
+      "grade":"07级",
+      "classes":"202",
+      "phone":18074540039,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": "3"
+    },
+    {
+      "id":4,
+      "username": "五狗子",
+      "sex": "男",
+      "grade":"07级",
+      "classes":"202",
+      "phone":18074543037,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": 2
+    },
+    {
+      "id":5,
+      "username": "六狗子",
+      "sex": "女",
+      "grade":"07级",
+      "classes":"202",
+      "phone":18074940039,
+      "address": "贵州江口",
+      "home_phone":18074540036,
+      "status": 2
+    },
+    {
+      "id":6,
+      "username": "七狗子",
+      "sex": "男",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074840037,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": false
+    },
+    {
+      "id":7,
+      "username": "八狗子",
+      "sex": "女",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074541039,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": true
+    },
+    {
+      "id":8,
+      "username": "九狗子",
+      "sex": "女",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074540036,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": true
+    },
+    {
+      "id":9,
+      "username": "十狗子",
+      "sex": "男",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074540037,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": false
+    },
+    {
+      "id":10,
+      "username": "十一狗子",
+      "sex": "女",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074540039,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": 2
+    },
+    {
+      "id":11,
+      "username": "十二狗子",
+      "sex": "男",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074543037,
+      "address": "贵州江口",
+      "home_phone": "管理员",
+      "status": 2
+    },
+    {
+      "id":12,
+      "username": "十三狗子",
+      "sex": "女",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074940039,
+      "address": "贵州江口",
+      "home_phone": 18074540036,
+      "status": true
+    },
+    {
+      "id":13,
+      "username": "十四狗子",
+      "sex": "男",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074840037,
+      "address": "湖南长沙",
+      "home_phone": 18074540036,
+      "status": false
+    },
+    {
+      "id":14,
+      "username": "十五狗子",
+      "sex": "女",
+      "grade":"08级",
+      "classes":"202",
+      "phone":18074541039,
+      "address": "贵州江口啊手动阀手动阀手动阀手动阀啊手动阀手动阀",
+      "home_phone": 18074540036,
+      "status": true
+    }
+  ]
+}

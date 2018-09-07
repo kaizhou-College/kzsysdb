@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.kz.kzsys.core.web.BaseQueryModel;
 
 public interface IBaseService<M,QM extends BaseQueryModel> {
-	
+
 	public Long deleteByPrimaryKey(Serializable uuid);
 
 	public Long insert(M m);
@@ -20,5 +20,5 @@ public interface IBaseService<M,QM extends BaseQueryModel> {
 	public Long updateByPrimaryKey(M m);
 
 	public PageInfo<M> getByConditionPage(QM qm);
-	
+
 }

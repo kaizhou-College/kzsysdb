@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kz.kzsys.mapper.KzScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.kz.kzsys.model.KzScore" >
+    <id column="scoreid" property="scoreid" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="mid_one" property="midOne" jdbcType="INTEGER" />
+    <result column="end_one" property="endOne" jdbcType="INTEGER" />
+    <result column="mid_two" property="midTwo" jdbcType="INTEGER" />
+    <result column="end_two" property="endTwo" jdbcType="INTEGER" />
+    <result column="mid_three" property="midThree" jdbcType="INTEGER" />
+    <result column="end_three" property="endThree" jdbcType="INTEGER" />
+    <result column="stuId" property="stuid" jdbcType="INTEGER" />
+    <result column="kz_daily_summary" property="kzDailySummary" jdbcType="INTEGER" />
+    <result column="dsid" property="dsid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scoreid, type, mid_one, end_one, mid_two, end_two, mid_three, end_three, stuId, kz_daily_summary, 
+    dsid, title, create_time, update_time, userid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from kz_score
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from kz_score
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kz.kzsys.model.KzScore" >
+    insert into kz_score (scoreid, type, mid_one, 
+      end_one, mid_two, end_two, 
+      mid_three, end_three, stuId, 
+      kz_daily_summary, dsid, title, 
+      create_time, update_time, userid
+      )
+    values (#{scoreid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{midOne,jdbcType=INTEGER}, 
+      #{endOne,jdbcType=INTEGER}, #{midTwo,jdbcType=INTEGER}, #{endTwo,jdbcType=INTEGER}, 
+      #{midThree,jdbcType=INTEGER}, #{endThree,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, 
+      #{kzDailySummary,jdbcType=INTEGER}, #{dsid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kz.kzsys.model.KzScore" >
+    update kz_score
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="midOne != null" >
+        mid_one = #{midOne,jdbcType=INTEGER},
+      </if>
+      <if test="endOne != null" >
+        end_one = #{endOne,jdbcType=INTEGER},
+      </if>
+      <if test="midTwo != null" >
+        mid_two = #{midTwo,jdbcType=INTEGER},
+      </if>
+      <if test="endTwo != null" >
+        end_two = #{endTwo,jdbcType=INTEGER},
+      </if>
+      <if test="midThree != null" >
+        mid_three = #{midThree,jdbcType=INTEGER},
+      </if>
+      <if test="endThree != null" >
+        end_three = #{endThree,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        stuId = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="kzDailySummary != null" >
+        kz_daily_summary = #{kzDailySummary,jdbcType=INTEGER},
+      </if>
+      <if test="dsid != null" >
+        dsid = #{dsid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kz.kzsys.model.KzScore" >
+    update kz_score
+    set type = #{type,jdbcType=VARCHAR},
+      mid_one = #{midOne,jdbcType=INTEGER},
+      end_one = #{endOne,jdbcType=INTEGER},
+      mid_two = #{midTwo,jdbcType=INTEGER},
+      end_two = #{endTwo,jdbcType=INTEGER},
+      mid_three = #{midThree,jdbcType=INTEGER},
+      end_three = #{endThree,jdbcType=INTEGER},
+      stuId = #{stuid,jdbcType=INTEGER},
+      kz_daily_summary = #{kzDailySummary,jdbcType=INTEGER},
+      dsid = #{dsid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      userid = #{userid,jdbcType=INTEGER}
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+  </update>
+
+  <!--x下面是我修改了的方法-->
+  <insert id="insertSelective" parameterType="com.kz.kzsys.model.KzScore" >
+    insert into kz_score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      scoreid,
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="midOne != null" >
+        mid_one,
+      </if>
+      <if test="endOne != null" >
+        end_one,
+      </if>
+      <if test="midTwo != null" >
+        mid_two,
+      </if>
+      <if test="endTwo != null" >
+        end_two,
+      </if>
+      <if test="midThree != null" >
+        mid_three,
+      </if>
+      <if test="endThree != null" >
+        end_three,
+      </if>
+      <if test="stuid != null" >
+        stuId,
+      </if>
+      <if test="kzDailySummary != null" >
+        kz_daily_summary,
+      </if>
+      <if test="dsid != null" >
+        dsid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      null,
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="midOne != null" >
+        #{midOne,jdbcType=INTEGER},
+      </if>
+      <if test="endOne != null" >
+        #{endOne,jdbcType=INTEGER},
+      </if>
+      <if test="midTwo != null" >
+        #{midTwo,jdbcType=INTEGER},
+      </if>
+      <if test="endTwo != null" >
+        #{endTwo,jdbcType=INTEGER},
+      </if>
+      <if test="midThree != null" >
+        #{midThree,jdbcType=INTEGER},
+      </if>
+      <if test="endThree != null" >
+        #{endThree,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="kzDailySummary != null" >
+        #{kzDailySummary,jdbcType=INTEGER},
+      </if>
+      <if test="dsid != null" >
+        #{dsid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+  <!--下面是我自己写的方法-->
+  <select id="getByConditionPage" parameterType="kzScoreQuery" resultType="kzScore">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM kz_score
+    where
+    1=1
+    <if test="stuIds != null " >
+      and stuid in (${stuIds})
+    </if>
+    <if test="scoreType == 1" >
+      <choose>
+        <when test="score == 90">
+          and mid_One > 90
+        </when>
+        <when test="score == 80">
+          and mid_One BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and mid_One BETWEEN 70 AND 80
+        </when>
+        <when test="score == 60">
+          and mid_One BETWEEN 60 AND 70
+        </when>
+        <when test="score == 50">
+          and mid_One BETWEEN 40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > mid_One
+        </when>
+      </choose>
+    </if>
+    <if test="scoreType == 2" >
+      <choose>
+        <when test="score == 90">
+          and end_One > 90
+        </when>
+        <when test="score == 80">
+          and end_One BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and end_One BETWEEN 70 AND 80
+        </when>
+        <when test="score == 60">
+          and end_One BETWEEN  60 AND 70
+        </when>
+        <when test="score == 50">
+          and end_One BETWEEN  40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > end_One
+        </when>
+      </choose>
+    </if>
+    <if test="scoreType == 3" >
+      <choose>
+        <when test="score == 90">
+          and mid_Two > 90
+        </when>
+        <when test="score == 80">
+          and mid_Two BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and mid_Two BETWEEN 70 AND 80
+        </when>
+        <when test="score == 60">
+          and mid_Two BETWEEN  60 AND 70
+        </when>
+        <when test="score == 50">
+          and mid_Two BETWEEN 40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > mid_Two
+        </when>
+      </choose>
+    </if>
+    <if test="scoreType == 4" >
+      <choose>
+        <when test="score == 90">
+          and end_Two > 90
+        </when>
+        <when test="score == 80">
+          and end_Two BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and end_Two BETWEEN  70 AND 80
+        </when>
+        <when test="score == 60">
+          and end_Two BETWEEN 60 AND 70
+        </when>
+        <when test="score == 50">
+          and end_Two BETWEEN 40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > end_Tow
+        </when>
+      </choose>
+    </if>
+    <if test="scoreType == 5" >
+      <choose>
+        <when test="score == 90">
+          and mid_Three > 90
+        </when>
+        <when test="score == 80">
+          and mid_Three BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and mid_Three BETWEEN 70 AND 80
+        </when>
+        <when test="score == 60">
+          and mid_Three BETWEEN 60 AND 70
+        </when>
+        <when test="score == 50">
+          and mid_Three BETWEEN 40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > mid_Three
+        </when>
+      </choose>
+    </if>
+    <if test="scoreType == 5" >
+      <choose>
+        <when test="score == 90">
+          and end_Three > 90
+        </when>
+        <when test="score == 80">
+          and end_Three BETWEEN 80 AND 90
+        </when>
+        <when test="score == 70">
+          and end_Three BETWEEN 70 AND 80
+        </when>
+        <when test="score == 60">
+          and end_Three BETWEEN 60 AND 70
+        </when>
+        <when test="score == 50">
+          and end_Three BETWEEN 40 AND 60
+        </when>
+        <when test="score == 40">
+          and 40 > end_Three
+        </when>
+
+      </choose>
+    </if>
+
+
+
+  </select>
+  <update id="myUpdateByPrimaryKeySelective" parameterType="com.kz.kzsys.model.KzScore" >
+    update kz_score
+    <set >
+      <if test="type != null and type!=''" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="midOne != null and midOne!=0 " >
+        mid_one = #{midOne,jdbcType=INTEGER},
+      </if>
+      <if test="endOne != null and endOne !=0 " >
+        end_one = #{endOne,jdbcType=INTEGER},
+      </if>
+      <if test="midTwo != null and midTwo!=0 " >
+        mid_two = #{midTwo,jdbcType=INTEGER},
+      </if>
+      <if test="endTwo != null and endTwo!=0 " >
+        end_two = #{endTwo,jdbcType=INTEGER},
+      </if>
+      <if test="midThree != null and midThree!= 0 " >
+        mid_three = #{midThree,jdbcType=INTEGER},
+      </if>
+      <if test="endThree != null and endThree!=0 " >
+        end_three = #{endThree,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null and stuid!=0 " >
+        stuId = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null " >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null " >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null and userid!=0 " >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where scoreid = #{scoreid,jdbcType=INTEGER}
+
+  </update>
+</mapper>

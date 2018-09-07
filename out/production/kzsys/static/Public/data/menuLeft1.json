@@ -1,0 +1,66 @@
+[
+  {
+    "title": "系统日志",
+    "icon": "layui-icon layui-icon-tabs",
+    "href": "/system_log",
+    "spread": false,
+    "children":[
+      {
+        "title": "登录日志",
+        "icon": "iconfont icon-clock_fill",
+        "href": "sysournallog.html",
+        "spread": false
+      },
+      {
+        "title": "错误日志",
+        "icon": "layui-icon layui-icon-tabs",
+        "href": "systemerrorlog.html",
+        "spread": false
+      },
+      {
+        "title": "操作日志",
+        "icon": "iconfont icon-guanli",
+        "href": "systemoperationlog.html",
+        "spread": false
+      }
+    ]
+  },
+  {
+    "title": "权限管理",
+    "icon": "iconfont icon-addressbook",
+    "href": "/admin/auth/group",
+    "spread": false,
+    "children":[
+      {
+        "title": "用户管理",
+        "icon": "iconfont icon-addressbook_fill",
+        "href": "admin_user.html",
+        "spread": false
+      },
+      {
+        "title": "规则管理",
+        "icon": "iconfont icon-createtask",
+        "href": "rule.html",
+        "spread": false
+      },
+      {
+        "title": "角色组管理",
+        "icon": "layui-icon layui-icon-user",
+        "href": "group.html",
+        "spread": false
+      }
+    ]
+  },
+  {
+    "title": "Test控制器",
+    "icon": "iconfont icon-caidan",
+    "href": "/admin/test/index",
+    "spread": false
+  },
+  {
+    "title": "菜单管理",
+    "icon": "iconfont icon-menu1",
+    "href": "/admin/auth/menus",
+    "spread": false
+  }
+]

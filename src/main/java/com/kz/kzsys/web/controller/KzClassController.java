@@ -28,6 +28,7 @@ public class KzClassController {
         return "/front/list_classes";
     }
 
+
     @RequestMapping("/add")
     public String add(){
         return "/front/add_class";
@@ -48,6 +49,7 @@ public class KzClassController {
     @PostMapping("/list")
     @ResponseBody
     public ServerResponse<List> list(KzClassQuery kcQ){
+
         PageInfo<KzClass> pageInfo = kzClassService.getByConditionPage(kcQ);
         return  ServerResponse.createBySuccess("查询成功！！",pageInfo.getList(),pageInfo.getPageNum(),pageInfo.getPageSize(),(int)pageInfo.getTotal());
     }

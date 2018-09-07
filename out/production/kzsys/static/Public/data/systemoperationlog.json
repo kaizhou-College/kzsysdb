@@ -1,0 +1,40 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 2,
+  "data": [
+    { "id":1
+      ,"title":"批量删除"
+      ,"url":"http://www.layui.com/doc/modules/table.html"
+      ,"way_state":1
+      ,"usetime":"1.0000"
+      ,"usemem":"3"
+      ,"result":0
+      ,"admin_user_id":2
+      ,"createtime":"2018-07-23 11:52:54"
+      ,"message":"删除失败"
+    },
+    { "id":3
+      ,"title":"批量删除"
+      ,"url":"http://www.layui.com/doc/modules/table.html"
+      ,"way_state":1
+      ,"usetime":"1.2000"
+      ,"usemem":"23"
+      ,"result":0
+      ,"admin_user_id":3
+      ,"createtime":"2018-07-23 11:52:54"
+      ,"message":"操作延迟"
+    },
+    { "id":2
+      ,"title":"批量删除"
+      ,"url":"http://www.layui.com/doc/modules/table.html"
+      ,"way_state":1
+      ,"usetime":"3.0000"
+      ,"usemem":"2"
+      ,"result":1
+      ,"admin_user_id":2
+      ,"createtime":"2018-07-23 11:52:54"
+      ,"message":"删除成功"
+    }
+  ]
+}
